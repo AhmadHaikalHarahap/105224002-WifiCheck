@@ -396,3 +396,116 @@ Batasan yang perlu diperhatikan:
 - Penilaian bergantung pada informasi yang dimasukkan pengguna dan aturan evaluasi yang diimplementasikan.
 - Hasil evaluasi merupakan penilaian awal edukatif, bukan jaminan bahwa suatu jaringan sepenuhnya aman.
 - Fitur kriptografi lanjutan (seperti pembuatan hash/fingerprint konfigurasi SHA-256) belum menjadi persyaratan implementasi Milestone 1 dan direncanakan untuk milestone berikutnya.
+
+## 14. Komponen Kriptografi
+
+### 14.1 Deskripsi
+
+WiFi Check adalah aplikasi untuk membantu pengguna mengevaluasi konfigurasi keamanan jaringan Wi-Fi. Komponen kriptografi pada tugas ini menggunakan algoritma **SHA-256** untuk menghasilkan fingerprint dari konfigurasi Wi-Fi yang telah divalidasi dan disusun dalam format yang konsisten.
+
+Fingerprint dapat digunakan untuk membandingkan konfigurasi dan membantu mendeteksi perubahan data. SHA-256 bukan enkripsi, sehingga hasilnya tidak dapat digunakan untuk mengembalikan konfigurasi asli.
+
+### 14.2 Data dan Tujuan Keamanan
+
+| Data | Tujuan keamanan | Prioritas |
+|---|---|---|
+| SSID | Mengidentifikasi jaringan yang dinilai sebagai bagian dari konfigurasi | Sedang |
+| Protokol keamanan | Membedakan konfigurasi seperti WPA2, WPA3, WEP, dan jaringan terbuka | Tinggi |
+| Status perlindungan password | Membedakan status perlindungan jaringan | Tinggi |
+| Status WPS | Membantu mengenali perubahan status WPS | Tinggi |
+| Status firmware | Membedakan kondisi firmware router yang dinilai | Sedang |
+
+Data yang digunakan dalam pengujian adalah data sintetis. Endpoint fingerprint tidak meminta atau menyimpan password Wi-Fi asli.
+
+### 14.3 Desain Komponen Kriptografi
+
+**Input**
+
+Komponen menerima objek konfigurasi yang terdiri atas lima field:
+
+- `ssid`
+- `securityProtocol`
+- `passwordProtection`
+- `wpsEnabled`
+- `firmwareStatus`
+
+**Proses**
+
+1. Memvalidasi bahwa input merupakan objek konfigurasi dengan tipe data dan nilai yang diperbolehkan.
+2. Menormalisasi SSID menggunakan Unicode NFC.
+3. Menolak SSID kosong atau SSID yang melebihi 32 byte UTF-8.
+4. Menyusun data dalam urutan field yang tetap dengan `schemaVersion` bernilai `1`.
+5. Mengubah representasi data menjadi teks JSON, lalu menghitung hash SHA-256 menggunakan modul `node:crypto` dari Node.js.
+
+**Output**
+
+Komponen menghasilkan fingerprint berupa 64 karakter heksadesimal. Endpoint mengembalikan objek JSON yang berisi:
+
+- `algorithm`: algoritma yang digunakan, yaitu `SHA-256`.
+- `schemaVersion`: versi format konfigurasi, yaitu `1`.
+- `fingerprint`: hasil hash konfigurasi.
+
+Jika input tidak valid atau body permintaan bukan JSON yang benar, endpoint mengembalikan respons HTTP `400`.
+
+### 14.4 Representasi Data dan Sumber Randomness
+
+Data konfigurasi diserialisasi menjadi JSON dengan urutan field yang tetap dan dikodekan sebagai UTF-8 sebelum dihitung hash-nya. Hasil SHA-256 direpresentasikan dalam bentuk heksadesimal.
+
+Komponen ini **tidak menggunakan randomness** karena SHA-256 menghasilkan hash deterministik: input yang sama akan menghasilkan fingerprint yang sama. Komponen juga tidak memerlukan kunci, nonce, atau salt.
+
+### 14.5 Endpoint API
+
+Endpoint yang tersedia adalah `POST /api/fingerprint`.
+
+Contoh request menggunakan konfigurasi sintetis:
+
+```json
+{
+  "ssid": "Lab-WiFi-01",
+  "securityProtocol": "wpa3",
+  "passwordProtection": "enabled",
+  "wpsEnabled": "disabled",
+  "firmwareStatus": "up-to-date"
+}
+```
+
+Contoh bentuk respons:
+
+```json
+{
+  "algorithm": "SHA-256",
+  "schemaVersion": 1,
+  "fingerprint": "<64 karakter heksadesimal>"
+}
+```
+
+Nilai fingerprint aktual dapat dilihat dengan mengirimkan request ke endpoint. Contoh ini tidak menggunakan password atau data rahasia.
+
+### 14.6 Cara Menjalankan dan Menguji
+
+Pastikan Node.js dan dependency proyek telah tersedia. Dari direktori utama proyek, jalankan:
+
+```bash
+npm install
+npm test
+npx tsc --noEmit
+npm run build
+npm run dev
+```
+
+Setelah server berjalan, endpoint dapat diuji dengan mengirim request `POST` berformat JSON ke `http://localhost:3000/api/fingerprint`.
+
+Pengujian otomatis menggunakan Vitest mencakup:
+
+1. Memastikan fingerprint memiliki 64 karakter heksadesimal.
+2. Memastikan input yang sama menghasilkan fingerprint yang konsisten.
+3. Memastikan perubahan konfigurasi menghasilkan fingerprint berbeda.
+4. Menolak SSID kosong.
+5. Menolak SSID yang melebihi 32 byte UTF-8.
+6. Menolak protokol keamanan yang tidak valid.
+
+### 14.7 Batasan Keamanan
+
+SHA-256 menyediakan fungsi hash, bukan enkripsi atau autentikasi. Fingerprint tidak membuktikan siapa yang membuat konfigurasi dan tidak menjamin integritas jika tidak dibandingkan dengan nilai referensi yang tepercaya. Konfigurasi dengan nilai yang mudah ditebak juga dapat dicoba ulang untuk menebak data asalnya.
+
+Karena itu, fingerprint pada proyek ini digunakan untuk identifikasi perubahan konfigurasi, bukan untuk menyimpan password, menyembunyikan data sensitif, atau membuktikan keaslian perangkat.
