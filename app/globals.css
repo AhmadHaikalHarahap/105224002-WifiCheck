@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-sidebar: #0f1729;
+  --color-sidebar-hover: #1e293b;
+  --color-sidebar-active: #164e63;
+  --color-primary: #0891b2;
+  --color-primary-light: #22d3ee;
+  --color-primary-dark: #0e7490;
+  --color-card: #ffffff;
+  --color-card-border: #e2e8f0;
+  --color-muted: #64748b;
+  --color-risk-low: #10b981;
+  --color-risk-low-bg: #ecfdf5;
+  --color-risk-low-border: #a7f3d0;
+  --color-risk-medium: #f59e0b;
+  --color-risk-medium-bg: #fffbeb;
+  --color-risk-medium-border: #fde68a;
+  --color-risk-high: #ef4444;
+  --color-risk-high-bg: #fef2f2;
+  --color-risk-high-border: #fecaca;
+  --color-input-border: #cbd5e1;
+  --color-input-focus: #0891b2;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Focus visible styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrolling unless reduced motion preferred */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
