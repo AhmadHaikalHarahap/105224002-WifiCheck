@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Assessment {
+  id                 String   @id @default(uuid()) @db.Uuid
+  ssid               String   @db.VarChar(32)
+  securityProtocol   String
+  passwordProtection String
+  wpsEnabled         String
+  firmwareStatus     String
+  notes              String   @default("") @db.VarChar(250)
+  riskLevel          String
+  summary            String   @db.Text
+  findings           Json
+  recommendations    Json
+  createdAt          DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([riskLevel])
+}
