@@ -1,0 +1,42 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Assessment {
+  id                 String    @id @default(uuid()) @db.Uuid
+  ssid               String    @db.VarChar(32)
+  securityProtocol   String
+  passwordProtection String
+  wpsEnabled         String
+  firmwareStatus     String
+  notes              String    @default("") @db.VarChar(250)
+  riskLevel          String
+  summary            String    @db.Text
+  recommendations    Json
+  createdAt          DateTime  @default(now())
+
+  findings           Finding[]
+
+  @@index([createdAt])
+  @@index([riskLevel])
+}
+
+
+model Finding {
+  id           String     @id @default(uuid()) @db.Uuid
+  assessmentId String     @db.Uuid
+  title        String     @db.VarChar(120)
+  description  String     @db.Text
+  severity     String
+  isManual     Boolean    @default(false)
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@index([assessmentId])
+  @@index([severity])
+}
