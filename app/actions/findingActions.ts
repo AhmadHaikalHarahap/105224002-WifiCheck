@@ -1,9 +1,11 @@
-
 'use server';
 
+import { randomUUID } from 'node:crypto';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
+import type { Prisma } from '@/lib/generated/prisma/client';
+import { encryptFindingFields } from '@/lib/assessment-crypto';
 
 const uuidSchema = z.string().uuid('ID tidak valid.');
 
@@ -65,11 +67,20 @@ export async function createFindingAction(formData: FormData) {
             };
         }
 
+        const findingId = randomUUID();
+        const encryptedFinding = encryptFindingFields(assessment.id, findingId, {
+            title: validation.data.title,
+            description: validation.data.description,
+        });
+
         await prisma.finding.create({
             data: {
+                id: findingId,
                 assessmentId: assessment.id,
                 title: validation.data.title,
+                title_enc: encryptedFinding.title_enc as unknown as Prisma.InputJsonValue,
                 description: validation.data.description,
+                description_enc: encryptedFinding.description_enc as unknown as Prisma.InputJsonValue,
                 severity: validation.data.severity,
                 isManual: true,
             },
@@ -116,6 +127,15 @@ export async function updateFindingAction(formData: FormData) {
     }
 
     try {
+        const encryptedFinding = encryptFindingFields(
+            assessmentValidation.data,
+            idValidation.data,
+            {
+                title: validation.data.title,
+                description: validation.data.description,
+            },
+        );
+
         const result = await prisma.finding.updateMany({
             where: {
                 id: idValidation.data,
@@ -124,7 +144,9 @@ export async function updateFindingAction(formData: FormData) {
             },
             data: {
                 title: validation.data.title,
+                title_enc: encryptedFinding.title_enc as unknown as Prisma.InputJsonValue,
                 description: validation.data.description,
+                description_enc: encryptedFinding.description_enc as unknown as Prisma.InputJsonValue,
                 severity: validation.data.severity,
             },
         });

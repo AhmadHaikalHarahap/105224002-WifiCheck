@@ -1,15 +1,12 @@
-
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 import { prisma } from '@/lib/prisma';
-import type {
-    Assessment,
-    RiskLevel,
-    SecurityProtocol,
-    ProtectionStatus,
-    FirmwareStatus,
-} from '@/types/assessment';
+import type { Assessment, RiskLevel } from '@/types/assessment';
+import {
+    decryptAssessmentFields,
+    decryptFindingFields,
+} from '@/lib/assessment-crypto';
 
 import EditAssessmentForm from '@/components/assessment/EditAssessmentForm';
 
@@ -50,26 +47,27 @@ async function EditAssessmentData({ params }: EditPageProps) {
         notFound();
     }
 
+    const decrypted = decryptAssessmentFields(item);
+
     const assessment: Assessment = {
         id: item.id,
-        ssid: item.ssid,
-        securityProtocol: item.securityProtocol as SecurityProtocol,
-        passwordProtection: item.passwordProtection as ProtectionStatus,
-        wpsEnabled: item.wpsEnabled as ProtectionStatus,
-        firmwareStatus: item.firmwareStatus as FirmwareStatus,
-        notes: item.notes,
+        ssid: decrypted.ssid,
+        securityProtocol: decrypted.securityProtocol,
+        passwordProtection: decrypted.passwordProtection,
+        wpsEnabled: decrypted.wpsEnabled,
+        firmwareStatus: decrypted.firmwareStatus,
+        notes: decrypted.notes,
         riskLevel: item.riskLevel as RiskLevel,
-        summary: item.summary,
-        recommendations: Array.isArray(item.recommendations)
-            ? item.recommendations.filter(
-                (value): value is string => typeof value === 'string',
-            )
-            : [],
-        findings: item.findings.map((finding) => ({
-            title: finding.title,
-            description: finding.description,
-            severity: finding.severity as RiskLevel,
-        })),
+        summary: decrypted.summary,
+        recommendations: decrypted.recommendations,
+        findings: item.findings.map((finding) => {
+            const decryptedFinding = decryptFindingFields(finding);
+            return {
+                title: decryptedFinding.title,
+                description: decryptedFinding.description,
+                severity: finding.severity as RiskLevel,
+            };
+        }),
         createdAt: item.createdAt.toISOString(),
     };
 

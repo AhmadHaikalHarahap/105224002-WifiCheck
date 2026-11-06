@@ -9,19 +9,27 @@ datasource db {
 }
 
 model Assessment {
-  id                 String    @id @default(uuid()) @db.Uuid
-  ssid               String    @db.VarChar(32)
-  securityProtocol   String
-  passwordProtection String
-  wpsEnabled         String
-  firmwareStatus     String
-  notes              String    @default("") @db.VarChar(250)
-  riskLevel          String
-  summary            String    @db.Text
-  recommendations    Json
-  createdAt          DateTime  @default(now())
+  id                     String    @id @default(uuid()) @db.Uuid
+  ssid                   String    @db.VarChar(32)
+  ssid_enc               Json?
+  securityProtocol       String
+  securityProtocol_enc   Json?
+  passwordProtection     String
+  passwordProtection_enc Json?
+  wpsEnabled             String
+  wpsEnabled_enc         Json?
+  firmwareStatus         String
+  firmwareStatus_enc     Json?
+  notes                  String    @default("") @db.VarChar(250)
+  notes_enc              Json?
+  riskLevel              String
+  summary                String    @db.Text
+  summary_enc            Json?
+  recommendations        Json
+  recommendations_enc    Json?
+  createdAt              DateTime  @default(now())
 
-  findings           Finding[]
+  findings               Finding[]
 
   @@index([createdAt])
   @@index([riskLevel])
@@ -29,13 +37,15 @@ model Assessment {
 
 
 model Finding {
-  id           String     @id @default(uuid()) @db.Uuid
-  assessmentId String     @db.Uuid
-  title        String     @db.VarChar(120)
-  description  String     @db.Text
-  severity     String
-  isManual     Boolean    @default(false)
-  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  id              String     @id @default(uuid()) @db.Uuid
+  assessmentId    String     @db.Uuid
+  title           String     @db.VarChar(120)
+  title_enc       Json?
+  description     String     @db.Text
+  description_enc Json?
+  severity        String
+  isManual        Boolean    @default(false)
+  assessment      Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
 
   @@index([assessmentId])
   @@index([severity])

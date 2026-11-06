@@ -1,16 +1,12 @@
-
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 import { prisma } from '@/lib/prisma';
-
-import type {
-  Assessment,
-  RiskLevel,
-  SecurityProtocol,
-  ProtectionStatus,
-  FirmwareStatus,
-} from '@/types/assessment';
+import type { Assessment, RiskLevel } from '@/types/assessment';
+import {
+  decryptAssessmentFields,
+  decryptFindingFields,
+} from '@/lib/assessment-crypto';
 
 import ReportDetailClient from './ReportDetailClient';
 import FindingManager from '@/components/assessment/FindingManager';
@@ -47,56 +43,53 @@ async function ReportDetailData({ params }: ReportPageProps) {
 
   const databaseAssessment = await prisma.assessment.findUnique({
     where: { id },
-    include: {
-      findings: {
-        orderBy: {
-          title: 'asc',
-        },
-      },
-    },
+    include: { findings: true },
   });
 
   if (!databaseAssessment) {
     notFound();
   }
 
+  let decryptedAssessment: ReturnType<typeof decryptAssessmentFields>;
+  try {
+    decryptedAssessment = decryptAssessmentFields(databaseAssessment);
+  } catch (error) {
+    console.error('Gagal mendekripsi assessment:', error);
+    notFound();
+    return; // unreachable, but satisfies TypeScript
+  }
+
+  const decryptedFindings = databaseAssessment.findings
+    .map((finding) => {
+      const decrypted = decryptFindingFields(finding);
+      return {
+        id: finding.id,
+        title: decrypted.title,
+        description: decrypted.description,
+        severity: finding.severity,
+        isManual: finding.isManual,
+      };
+    })
+    .sort((a, b) => a.title.localeCompare(b.title));
+
   const assessment: Assessment = {
     id: databaseAssessment.id,
-    ssid: databaseAssessment.ssid,
-    securityProtocol:
-      databaseAssessment.securityProtocol as SecurityProtocol,
-    passwordProtection:
-      databaseAssessment.passwordProtection as ProtectionStatus,
-    wpsEnabled:
-      databaseAssessment.wpsEnabled as ProtectionStatus,
-    firmwareStatus:
-      databaseAssessment.firmwareStatus as FirmwareStatus,
-    notes: databaseAssessment.notes,
+    ssid: decryptedAssessment.ssid,
+    securityProtocol: decryptedAssessment.securityProtocol,
+    passwordProtection: decryptedAssessment.passwordProtection,
+    wpsEnabled: decryptedAssessment.wpsEnabled,
+    firmwareStatus: decryptedAssessment.firmwareStatus,
+    notes: decryptedAssessment.notes,
     riskLevel: databaseAssessment.riskLevel as RiskLevel,
-    summary: databaseAssessment.summary,
-
-    recommendations: Array.isArray(databaseAssessment.recommendations)
-      ? databaseAssessment.recommendations.filter(
-        (value): value is string => typeof value === 'string',
-      )
-      : [],
-
-    findings: databaseAssessment.findings.map((finding) => ({
+    summary: decryptedAssessment.summary,
+    recommendations: decryptedAssessment.recommendations,
+    findings: decryptedFindings.map((finding) => ({
       title: finding.title,
       description: finding.description,
       severity: finding.severity as RiskLevel,
     })),
-
     createdAt: databaseAssessment.createdAt.toISOString(),
   };
-
-  const findingRecords = databaseAssessment.findings.map((finding) => ({
-    id: finding.id,
-    title: finding.title,
-    description: finding.description,
-    severity: finding.severity,
-    isManual: finding.isManual,
-  }));
 
   return (
     <>
@@ -106,7 +99,7 @@ async function ReportDetailData({ params }: ReportPageProps) {
         <div className="mx-auto max-w-4xl">
           <FindingManager
             assessmentId={databaseAssessment.id}
-            findings={findingRecords}
+            findings={decryptedFindings}
           />
         </div>
       </div>
