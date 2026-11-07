@@ -1,0 +1,61 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER belum diatur}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD belum diatur}
+      POSTGRES_DB: ${POSTGRES_DB:?POSTGRES_DB belum diatur}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - wificheck-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true
+
+  app:
+    image: wificheck:sec-0.2
+    restart: unless-stopped
+    user: "1001:1001"
+    env_file:
+      - /home/haikal/.config/wificheck/.env.docker
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: "0.0.0.0"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - wificheck-network
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  migrate:
+    build:
+      context: .
+      target: builder
+    profiles:
+      - tools
+    env_file:
+      - /home/haikal/.config/wificheck/.env.docker
+    command: ["npx", "prisma", "migrate", "deploy"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - wificheck-network
+
+volumes:
+  postgres_data:
+
+networks:
+  wificheck-network:
+    driver: bridge

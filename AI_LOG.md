@@ -162,3 +162,33 @@ AI digunakan sebagai alat bantu dalam proses pengembangan fitur kriptografi WiFi
 Berdasarkan pengujian yang telah dilakukan, implementasi kriptografi berhasil melewati 51 unit test, pemeriksaan TypeScript, validasi Prisma, production build, dan production smoke test.
 
 Seluruh hasil implementasi tetap diperiksa dan diverifikasi oleh pengembang sebelum digunakan sebagai bagian dari rilis milestone `kripto-v0.2`.
+
+---
+
+## 11. Milestone SEC-0.2 — Security Hardening, Audit, dan Image Scan (2026-11-07)
+
+### 11.1 Latar Belakang & Kebutuhan
+Milestone `sec-0.2` berfokus pada pengerasan keamanan sistem secara menyeluruh (*full-stack hardening*), yang mencakup:
+1. Audit dan eliminasi kerentanan dependensi npm tanpa menurunkan versi Next.js atau menggunakan flags berisiko (`--force`).
+2. Perbaikan kompatibilitas pengujian unit `scripts/migrate-encrypt.ts` agar berjalan konsisten di Windows PowerShell dan Ubuntu WSL2.
+3. Pengerasan kontainer Docker (multi-stage build, non-root user `1001:1001`, `cap_drop: ALL`, `no-new-privileges:true`, dan isolasi port jaringan).
+4. Pemindaian citra menggunakan Docker Scout, eliminasi seluruh kerentanan *Critical*, dan pembuatan Software Bill of Materials (SBOM) berstandar CycloneDX v1.5.
+5. Verifikasi pengerasan SSH daemon host (`PermitRootLogin no`, `PasswordAuthentication no`, `PubkeyAuthentication yes`) dan peningkatan skor indeks Lynis minimal 70.
+6. Penyusunan dokumentasi pengujian kontrol akses (`security/access-tests.md`), pemetaan risiko ke Tugas 2 & 3 pada `docs/security/risk-register.md`, checklist demonstrasi, dan laporan akhir pengumpulan.
+
+### 11.2 Bantuan AI dalam Milestone SEC-0.2
+- **Audit Dependensi:** Menganalisis rantai dependensi `minimatch` dan merancang solusi *scoped override* bertingkat di `package.json` yang membatasi upgrade `minimatch@>=11.0.5` hanya pada `@typescript-eslint/typescript-estree`. Ini menyelesaikan kerentanan GHSA-g3hv-75wg-m249 menjadi **0 vulnerabilities** tanpa merusak pustaka ESLint v9 yang membutuhkan API minimatch v3.
+- **Perbaikan Kode Tes Multiplatform:** Mengidentifikasi kurung kurawal tidak seimbang pada tes nomor 9 dan 10 di `tests/migrate-encrypt.test.ts` serta mengganti path Windows hardcoded menjadi `resolve(process.cwd(), ...)` dan `pathToFileURL(...)` untuk kompatibilitas Windows dan WSL2.
+- **Hardening Dockerfile:** Menambahkan `apk upgrade --no-cache` pada stage Docker untuk memperbarui pustaka Alpine OS (`zlib 1.3.2-r1` -> `1.4-r0`), yang berhasil mengeliminasi kerentanan kritis CVE-2026-4738.
+- **Scanning & SBOM:** Memandu pembuatan perbandingan laporan Docker Scout (`image-scan-before.txt` vs `image-scan-after.txt`) dan mengekspor SBOM CycloneDX (`security/sbom.cdx.json`).
+- **Penyusunan Dokumentasi:** Membantu menyusun matriks peran dan kontrol akses dengan 12 tes positif dan 12 tes negatif berimbang, serta checklist demonstrasi untuk pengujian bersama dosen.
+
+### 11.3 Hasil Verifikasi Aktual Milestone SEC-0.2
+- **Unit Tests:** 51/51 tes lulus (Vitest v4.1.12).
+- **ESLint & TypeScript:** 0 error, 0 warning.
+- **Production Build:** Sukses terkompilasi (Next.js 16.4.5 Turbopack).
+- **npm audit:** 0 vulnerabilities.
+- **Docker Scout:** 0 Critical, 7 High, 12 Medium, 1 Low (turun dari 3 Critical, 8 High).
+- **Lynis Hardening Index:** Meningkat dari 66 menjadi 70.
+- **SSH Hardening:** Terverifikasi via `sshd -T`.
+- **Kontainer Aktual:** User `1001:1001`, `cap_drop: ALL`, `no-new-privileges:true`, port 3000 dan 5432 terisolasi dari host.

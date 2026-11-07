@@ -231,17 +231,17 @@ Risiko dipilih berdasarkan kemungkinan terjadinya skenario, besarnya dampak terh
 
 Prioritas tindak lanjut dapat berubah setelah kontrol aktual diperiksa. Status “belum diverifikasi” tidak berarti kontrol tersebut pasti tidak ada.
 
-## 7. Pemetaan ke Tugas 2 dan Tugas 3
+## 7. Pemetaan Kontrol ke Tugas 2 dan Tugas 3
 
-Rincian resmi Tugas 2 dan Tugas 3 belum tersedia dalam bahan yang digunakan untuk dokumen ini. Karena itu, pemetaan kontrol ke nomor tugas belum dapat dipastikan.
+Pemetaan berikut menghubungkan kontrol mitigasi dari lima risiko prioritas ke implementasi konkret pada **Tugas 2 (Kriptografi & Integritas Data - `kripto-v0.2`)** dan **Tugas 3 (Security Hardening & Deployment - `sec-0.2`)**:
 
-| Risk ID | Kontrol yang diusulkan | Pemetaan |
-|---|---|---|
-| R-01 | Penjelasan batasan assessment dan pengujian skenario | Perlu dikonfirmasi |
-| R-02 | Pengujian unit aturan risiko dan penanganan input | Perlu dikonfirmasi |
-| R-03 | Verifikasi HTTPS/TLS dan konfigurasi deployment | Perlu dikonfirmasi |
-| R-04 | Code review, pemeriksaan dependensi, lint, dan build | Perlu dikonfirmasi |
-| R-05 | Pemeriksaan rendering aman dan pengujian karakter khusus | Perlu dikonfirmasi |
+| Risk ID | Risiko Prioritas | Kontrol Mitigasi | Pemetaan Modul Tugas | Status Implementasi | Catatan / Data dari Pengguna |
+|---|---|---|---|---|---|
+| **R-01** | Hasil assessment disalahartikan sebagai jaminan keamanan | Penjelasan batasan assessment pada UI laporan, validasi input ketat, dan penolakan klaim jaminan absolut | **Tugas 1 & Tugas 2** (UI & Rules) | Terpasang pada komponen UI dan rules engine | *Memerlukan konfirmasi pengguna terkait redaksi disclaimer formal.* |
+| **R-02** | Manipulasi hasil atau aturan penilaian | Enkripsi AES-256-GCM 8 kolom Assessment & 2 kolom Finding dengan AAD binding, pemrosesan server-side (Server Actions), fail-closed enforcement | **Tugas 2** (`kripto-v0.2`) | Selesai & Terverifikasi (51 unit tests passed) | Menggunakan AAD spesifik per-record untuk mencegah pemindahan ciphertext antar ID. |
+| **R-03** | Komunikasi web tanpa perlindungan memadai | Isolasi port host, jaringan bridge Docker internal (`wificheck-network`), SSH hardening (kunci publik saja, tolak password & root) | **Tugas 3** (`sec-0.2`) | Selesai & Terverifikasi (`sshd -T`, Docker inspect) | *Memerlukan data pengguna jika reverse proxy Nginx/TLS domain publik akan dipasang di depan Docker.* |
+| **R-04** | Manipulasi source code atau dependensi | Scoped override minimatch (`>=11.0.5`), audit dependensi 0 kerentanan, Docker multi-stage build, Docker Scout CVE scan (0 Critical), CycloneDX SBOM | **Tugas 2 & Tugas 3** (Supply Chain & Docker) | Selesai & Terverifikasi (`npm audit`, Docker Scout) | 0 Critical pada image scan Docker; SBOM ter-generate dalam format CycloneDX v1.5. |
+| **R-05** | Manipulasi konten atau tampilan laporan | Validasi server-side Zod, isolasi temuan manual vs otomatis (`isManual`), proteksi IDOR UUID, sanitasi error whitelist | **Tugas 2 & Tugas 3** (App Security & Sanitization) | Selesai & Terverifikasi (Unit tests AC-P01 s.d. AC-N12) | Sanitasi error `sanitizeErrorMessage` mencegah kebocoran kredensial database. |
 
 Pemetaan akhir dilakukan setelah instruksi atau rubrik Tugas 2 dan Tugas 3 tersedia. Jangan menandai kontrol sebagai selesai hanya karena kontrol tersebut ditulis dalam risk register.
 

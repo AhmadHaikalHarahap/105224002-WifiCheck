@@ -7,6 +7,8 @@
  * deteksi perubahan plaintext sumber, dan perlindungan eksekusi CLI.
  */
 
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   isAssessmentFullyEncrypted,
@@ -369,8 +371,8 @@ describe("scripts/migrate-encrypt (Backfill Logic & Concurrency Safety)", () => 
     expect(isMainModule("file:///path/to/migrate-encrypt.ts", "", false)).toBe(false);
 
     // Saat bukan test dan url cocok, return true
-    const metaUrl = "file:///D:/Dokumen/wificheck/scripts/migrate-encrypt.ts";
-    const argv1 = "D:\\Dokumen\\wificheck\\scripts\\migrate-encrypt.ts";
+    const argv1 = resolve(process.cwd(), "scripts", "migrate-encrypt.ts");
+    const metaUrl = pathToFileURL(argv1).href;
     expect(isMainModule(metaUrl, argv1, false)).toBe(true);
   });
 

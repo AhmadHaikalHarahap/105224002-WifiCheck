@@ -1,0 +1,1384 @@
+<h2>:mag: Vulnerabilities of <code>wificheck:sec-0.2</code></h2>
+
+<details open="true"><summary>:package: Image Reference</strong> <code>wificheck:sec-0.2</code></summary>
+<table>
+<tr><td>digest</td><td><code>sha256:ba17e3d0edf767036073f9b3e0f1b3d0c9f7d69e0cbed3a269a3c1bb04aec671</code></td><tr><tr><td>vulnerabilities</td><td><img alt="critical: 3" src="https://img.shields.io/badge/critical-3-8b1924"/> <img alt="high: 8" src="https://img.shields.io/badge/high-8-e25d68"/> <img alt="medium: 12" src="https://img.shields.io/badge/medium-12-fbb552"/> <img alt="low: 1" src="https://img.shields.io/badge/low-1-fce1a9"/> <!-- unspecified: 0 --></td></tr>
+<tr><td>platform</td><td>linux/amd64</td></tr>
+<tr><td>size</td><td>77 MB</td></tr>
+<tr><td>packages</td><td>256</td></tr>
+</table>
+</details></table>
+</details>
+
+<table>
+<tr><td valign="top">
+<details><summary><img alt="critical: 2" src="https://img.shields.io/badge/C-2-8b1924"/> <img alt="high: 1" src="https://img.shields.io/badge/H-1-e25d68"/> <img alt="medium: 0" src="https://img.shields.io/badge/M-0-lightgrey"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>next</strong> <code>16.4.0</code> (npm)</summary>
+
+<small><code>pkg:npm/next@16.4.0</code></small><br/>
+<a href="https://scout.docker.com/v/GHSA-673q-mjm6-r5xr?s=github&n=next&t=npm&vr=%3E%3D16.0.0%2C%3C%3D16.4.0"><img alt="critical 9.5: GHSA--673q--mjm6--r5xr" src="https://img.shields.io/badge/GHSA--673q--mjm6--r5xr-lightgrey?label=critical%209.5&labelColor=8b1924"/></a> <i>Deserialization of Untrusted Data</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=16.0.0<br/><=16.4.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>16.4.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>9.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:N</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+## Impact
+
+A vulnerability in applications using App router with Cache Component can lead to remote code execution. The application needs to have a `use cache` function that returns multiple typed arrays.
+
+## Workaround
+
+There is no known workaround for affected applications with such `use cache` functions. You should upgrade immediately even if your application does not have similar functions.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/GHSA-2464-fhr4-w9xw?s=github&n=next&t=npm&vr=%3E%3D16.0.0%2C%3C%3D16.4.0"><img alt="critical 9.5: GHSA--2464--fhr4--w9xw" src="https://img.shields.io/badge/GHSA--2464--fhr4--w9xw-lightgrey?label=critical%209.5&labelColor=8b1924"/></a> <i>Dependency on Vulnerable Third-Party Component</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=16.0.0<br/><=16.4.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>16.4.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>9.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+## Impact
+
+A memory-related vulnerability has been discovered in an upstream library used for Image Optimization can lead to possible remote code execution (RCE) when Next.js runs on glibc-based Linux.
+
+## Workaround
+
+Ensure the version of `sharp` used by Next.js is greater than or equal to `0.35.5`. Fresh installs automatically get a fixed version of `sharp`.
+Upgrading Next.js to the patched versions will ensure package managers automatically provide a fixed version of `sharp` to Next.js.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-94482?s=github&n=next&t=npm&vr=%3E%3D16.0.0%2C%3C%3D16.4.0"><img alt="high 8.2: CVE--2026--94482" src="https://img.shields.io/badge/CVE--2026--94482-lightgrey?label=high%208.2&labelColor=e25d68"/></a> <i>Allocation of Resources Without Limits or Throttling</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=16.0.0<br/><=16.4.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>16.4.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>8.2</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.386%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>33rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+## Impact
+
+Crafted requests targeting Next.js applications using App Router with at least one Server Action can lead to excessive CPU usage blocking processing of further requests in the same process.
+
+## Workarounds
+
+No workaround exists besides upgrading. Applications using Pages Router or not using Server Actions are not vulnerable.
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 1" src="https://img.shields.io/badge/C-1-8b1924"/> <img alt="high: 0" src="https://img.shields.io/badge/H-0-lightgrey"/> <img alt="medium: 0" src="https://img.shields.io/badge/M-0-lightgrey"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>zlib</strong> <code>1.3.2-r1</code> (apk)</summary>
+
+<small><code>pkg:apk/alpine/zlib@1.3.2-r1?os_name=alpine&os_version=3.24</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-4738?s=alpine&n=zlib&ns=alpine&t=apk&osn=alpine&osv=3.24&vr=%3C1.4-r0"><img alt="critical : CVE--2026--4738" src="https://img.shields.io/badge/CVE--2026--4738-lightgrey?label=critical%20&labelColor=8b1924"/></a> 
+
+<table>
+<tr><td>Affected range</td><td><code><1.4-r0</code></td></tr>
+<tr><td>Fixed version</td><td><code>1.4-r0</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.263%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>18th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 4" src="https://img.shields.io/badge/H-4-e25d68"/> <img alt="medium: 3" src="https://img.shields.io/badge/M-3-fbb552"/> <img alt="low: 1" src="https://img.shields.io/badge/L-1-fce1a9"/> <!-- unspecified: 0 --><strong>undici</strong> <code>6.28.0</code> (npm)</summary>
+
+<small><code>pkg:npm/undici@6.28.0</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-87018?s=github&n=undici&t=npm&vr=%3E%3D4.2.1%2C%3C6.29.1"><img alt="high 7.5: CVE--2026--87018" src="https://img.shields.io/badge/CVE--2026--87018-lightgrey?label=high%207.5&labelColor=e25d68"/></a> <i>Uncaught Exception</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=4.2.1<br/><6.29.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.29.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.187%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>8th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+## Impact
+
+undici crashes the client process when a TLS 1.2 server renegotiates after the connection is established and presents a different, CA-trusted certificate whose hostname does not match the requested host. Node.js re-runs hostname verification on the renegotiated handshake and destroys the socket with `ERR_TLS_CERT_ALTNAME_INVALID`. undici's established socket error handler asserted that this error code could never occur, so the peer-controlled error became an uncaught `AssertionError` that terminates the Node.js process. Both the HTTP/1.1 and HTTP/2 paths are affected.
+
+A malicious or compromised HTTPS endpoint reached through undici or the global `fetch()` can crash the client with a single server-initiated renegotiation, taking down all in-flight requests and background work in the process. Only TLS 1.2 is affected, because TLS 1.3 does not support renegotiation. Exploitation does not require a CA compromise: the attacker controls the endpoint and can present two ordinary valid certificates, the first matching the requested URL and the second intentionally not matching it.
+
+## Patches
+
+Upgrade to undici 6.29.1, 7.30.1, or 8.12.2.
+
+## Workarounds
+
+Restrict outbound connections to TLS 1.3, for example by setting `connect: { minVersion: 'TLSv1.3', maxVersion: 'TLSv1.3' }` on the client or agent, so that renegotiation cannot occur, when the target endpoints support TLS 1.3.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-19534?s=github&n=undici&t=npm&vr=%3E%3D6.7.0%2C%3C6.28.1"><img alt="high 7.5: CVE--2026--19534" src="https://img.shields.io/badge/CVE--2026--19534-lightgrey?label=high%207.5&labelColor=e25d68"/></a> <i>Uncaught Exception</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=6.7.0<br/><6.28.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.28.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.394%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>34th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+The undici WebSocket client throws an uncaught `TypeError` during the opening handshake when a server's `101` response includes a `Sec-WebSocket-Protocol` header that the client never requested. The throw occurs in a `queueMicrotask` callback with no surrounding `try`/`catch`, so it propagates as an uncaught exception and terminates the Node.js process. This is a remote, unauthenticated denial of service against any application that opens a WebSocket to an attacker controlled or compromised server, or over a plaintext `ws://` connection subject to a machine-in-the-middle. It affects the default `new WebSocket(url)` usage, where no subprotocol is requested. Per RFC 6455 section 4.1, an unrequested subprotocol must fail the connection, not crash it.
+
+All releases starting at undici 6.7.0 are affected.
+
+### Patches
+
+Upgrade to undici 6.28.1, 7.29.1, or 8.10.2.
+
+### Workarounds
+
+No workaround is available. The fix must be applied through an upgrade.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-109869?s=github&n=undici&t=npm&vr=%3E%3D6.23.0%2C%3C6.29.1"><img alt="high 7.5: CVE--2026--109869" src="https://img.shields.io/badge/CVE--2026--109869-lightgrey?label=high%207.5&labelColor=e25d68"/></a> <i>Uncaught Exception</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=6.23.0<br/><6.29.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.29.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.344%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>28th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+undici's `fetch()` crashes the Node.js process when a malicious server returns a response with more than five content codings and closes the connection before sending the body. undici rejects such responses (a content-encoding limit), but it created the internal response stream before that check and returned without attaching an error listener or aborting the request. The early close then surfaces a content-length mismatch on that orphaned internal stream, which Node.js treats as an unhandled `error` and terminates the process. A remote, unauthenticated server can trigger this with a single response, even when the application correctly catches the `fetch()` rejection. undici 6.x, 7.x, and 8.x are affected.
+
+### Patches
+
+Upgrade to `6.29.1`, `7.30.1`, or `8.12.2`. undici now validates the content-encoding chain before creating the internal body stream and aborts the response when the limit is exceeded, so no error can surface on an orphaned stream.
+
+### Workarounds
+
+None.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-109383?s=github&n=undici&t=npm&vr=%3E%3D4.0.0%2C%3C6.29.1"><img alt="high 7.4: CVE--2026--109383" src="https://img.shields.io/badge/CVE--2026--109383-lightgrey?label=high%207.4&labelColor=e25d68"/></a> <i>Improper Certificate Validation</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=4.0.0<br/><6.29.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.29.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.4</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.184%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>8th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+undici's `Agent` passes its constructor options through a JSON-based deep clone (`JSON.parse(JSON.stringify(...))`) before forwarding them to each per-origin `Pool`. JSON cannot represent functions, so a caller-supplied `tls` option containing a `checkServerIdentity` callback is silently dropped before it reaches the TLS layer. As a result, a TLS peer whose certificate a custom `checkServerIdentity` was written to reject, but which passes Node's default hostname and chain checks, is silently accepted when the request is made through `Agent`. Because `Agent` is the default dispatcher behind `request`, `fetch`, and `setGlobalDispatcher`, this is the path most applications use. `EnvHttpProxyAgent` is also affected on its direct and `NO_PROXY` routes, which delegate to an internal `Agent`.
+
+Only applications that pass a function-valued `tls` option (such as a custom `checkServerIdentity` for certificate or public-key pinning) are affected. Passing the same options through `connect` is not affected. This is the `Agent` counterpart of the `BalancedPool` certificate validation bypass fixed in CVE-2026-84961.
+
+### Patches
+
+Upgrade to undici `6.29.1`, `7.30.1`, or `8.12.2`. `Agent` now preserves the `tls` option outside the JSON clone, so custom TLS verification callbacks are forwarded to each origin unchanged.
+
+### Workarounds
+
+Pass the TLS options through `connect` instead of `tls`. For proxied `EnvHttpProxyAgent` destinations, use `requestTls` / `proxyTls`.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-85024?s=github&n=undici&t=npm&vr=%3E%3D6.25.0%2C%3C6.28.1"><img alt="medium 5.9: CVE--2026--85024" src="https://img.shields.io/badge/CVE--2026--85024-lightgrey?label=medium%205.9&labelColor=fbb552"/></a> <i>Uncaught Exception</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=6.25.0<br/><6.28.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.28.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>5.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.412%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>36th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+## Impact
+
+undici's WebSocket client (including Node.js's bundled `globalThis.WebSocket`) crashes the entire Node.js process when a remote WebSocket peer sends a permessage-deflate compressed message that crosses the decompressed-payload size limit and then contains a malformed DEFLATE block. In `lib/web/websocket/permessage-deflate.js`, the size-limit cleanup calls `removeAllListeners()` on the internal zlib `InflateRaw`, removing its `error` listener, but leaves the stream running. The inflater then emits a `Z_DATA_ERROR` with no listener attached, which Node.js treats as a fatal unhandled `error` event and terminates the process. Application `error`/`close` handlers on the public WebSocket cannot observe or prevent this, because the failing object is the internal `InflateRaw`.
+
+A malicious or compromised WebSocket server can crash a client with a single connection, unauthenticated and without any application mistake. The attack is asymmetric (about 130 KB on the wire expands past the limit) and can be repeated on reconnect (crash loop).
+
+Affected applications are those using the undici WebSocket client (`new WebSocket(...)`) or Node.js's bundled `globalThis.WebSocket` that can be induced to connect to an attacker-controlled or compromised WebSocket endpoint.
+
+## Patches
+
+Upgrade to undici v6.28.1, v7.29.1 or v8.10.2.
+
+## Workarounds
+
+No workaround is available.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-109932?s=github&n=undici&t=npm&vr=%3E%3D5.15.0%2C%3C6.29.1"><img alt="medium 5.9: CVE--2026--109932" src="https://img.shields.io/badge/CVE--2026--109932-lightgrey?label=medium%205.9&labelColor=fbb552"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=5.15.0<br/><6.29.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.29.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>5.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.321%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>25th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+undici's WebSocket client (including Node.js's bundled `globalThis.WebSocket`) can be driven to exhaust process memory by a malicious or compromised WebSocket server. For every PING frame received, the receiver automatically writes a PONG response to the socket and ignores the `false` return value from `socket.write()`, which is a backpressure signal, so a server that streams small PING frames while never reading the client's PONGs makes the outbound write queue and heap grow without bound until the Node.js process runs out of memory and terminates. The attack is remote and unauthenticated, needs only a normal WebSocket connection, and is asymmetric: small inbound PINGs produce a much larger retained outbound queue. Availability is the only impact. undici 5.x, 6.x, 7.x, and 8.x are affected; the WebSocket client was introduced in 5.15.0.
+
+### Patches
+
+Upgrade to `6.29.1`, `7.30.1`, or `8.12.2`, which pause WebSocket frame parsing when the automatic PONG response hits socket backpressure and resume on drain, bounding the outbound queue.
+
+### Workarounds
+
+None.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-109924?s=github&n=undici&t=npm&vr=%3E%3D6.5.0%2C%3C6.29.1"><img alt="medium 5.9: CVE--2026--109924" src="https://img.shields.io/badge/CVE--2026--109924-lightgrey?label=medium%205.9&labelColor=fbb552"/></a> <i>Allocation of Resources Without Limits or Throttling</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=6.5.0<br/><6.29.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.29.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>5.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.321%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>25th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+undici's `EventSource` client can be driven to exhaust process memory by a malicious or compromised Server-Sent Events peer. By sending millions of tiny completed `data:` fields with no blank event separator, or a single unfinished line split across many chunks, the parser retains a growing amount of per-field and per-chunk state. The byte-based `maxEventSize` and `maxResponseSize` limits do not bound that retained state, and `maxResponseSize` is enforced on the compressed body before decompression, so a small compressed response can expand into enough retained memory to terminate the process. The application only needs to maintain an `EventSource` connection to an untrusted peer, which controls only the response. Availability is the only impact.
+
+### Patches
+
+Upgrade to `6.29.1`, `7.30.1`, or `8.12.2`, which bound the retained EventSource parser state (the number of `data` fields and buffered chunks, the unfinished-line length, and per-field byte totals) independently of the byte limits.
+
+### Workarounds
+
+None.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-18540?s=github&n=undici&t=npm&vr=%3C6.28.1"><img alt="low 3.7: CVE--2026--18540" src="https://img.shields.io/badge/CVE--2026--18540-lightgrey?label=low%203.7&labelColor=fce1a9"/></a> <i>Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')</i>
+
+<table>
+<tr><td>Affected range</td><td><code><6.28.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>6.28.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>3.7</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.309%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>24th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+Undici's `interceptors.retry()` can resume a request after a partial response and append the resumed bytes to an already partially delivered body, while the application still receives the original response's status and headers. When that response carried a `Content-Length`, the application can receive a longer body. Applications that forward Undici's status, headers, and body downstream without recalculating framing, for example proxy or gateway applications, may emit a response whose body exceeds the forwarded `Content-Length`, and the excess bytes can be read as the start of a subsequent HTTP response (downstream response splitting or desynchronization).
+
+For example, a `404 Not Found` with `Content-Length: 2` that sends one byte then closes can be resumed with an open-ended `Range` request, and the resumed `206 Partial Content` bytes are appended, so the application receives more than two body bytes while still seeing `Content-Length: 2`. The bug requires `interceptors.retry()` enabled, an attacker-controlled or faulty upstream, and a downstream forwarder that does not recalculate `Content-Length`.
+
+### Patches
+
+Patched in undici v6.28.1, v7.29.1, and v8.10.2. Upgrade to one of these or later.
+
+### Workarounds
+
+- Disable `interceptors.retry()` for untrusted upstreams, or set `maxRetries: 0`.
+- Remove or recalculate `Content-Length` before forwarding a response body assembled by Undici.
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 2" src="https://img.shields.io/badge/H-2-e25d68"/> <img alt="medium: 1" src="https://img.shields.io/badge/M-1-fbb552"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>brace-expansion</strong> <code>5.0.9</code> (npm)</summary>
+
+<small><code>pkg:npm/brace-expansion@5.0.9</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-102278?s=github&n=brace-expansion&t=npm&vr=%3E%3D4.0.0%2C%3C5.0.11"><img alt="high 7.5: CVE--2026--102278" src="https://img.shields.io/badge/CVE--2026--102278-lightgrey?label=high%207.5&labelColor=e25d68"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=4.0.0<br/><5.0.11</code></td></tr>
+<tr><td>Fixed version</td><td><code>5.0.11</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.491%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>42nd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`expand_()` recurses once per level of brace *nesting*. Deeply nested input exhausts the native stack and crashes the process.
+
+This is distinct from CVE-2026-14257 / GHSA-mh99-v99m-4gvg, which made the *tail* iterative (recursion on `m.post`, driven by how many groups are chained). Nesting depth drives a different recursion that the tail fix never touched, so the documented constant-stack-depth guarantee only ever covered chained input, not nested input.
+
+It is also distinct from GHSA-6j4f-fj2g-mc7p, which fixed recursion in `parseCommaParts()`. Both payloads below still crash with that fix applied.
+
+### Two recursion sites
+
+**Comma members.** Each alternative of a brace set is expanded by a recursive call, so nesting a set inside every alternative recurses once per level:
+
+```js
+expand('{a,'.repeat(4000) + 'z' + '}'.repeat(4000))
+// RangeError: Maximum call stack size exceeded
+```
+
+Crashes at depth 3,907 - about **15.6 KB** of input.
+
+**Single set.** A brace set whose body parses to a single part is expanded by a recursive call before being re-wrapped (`x{{a,b}}y` -> `x{a}y x{b}y`), which recurses once per nesting level:
+
+```js
+expand('{'.repeat(3200) + 'a,b' + '}'.repeat(3200))
+// RangeError: Maximum call stack size exceeded
+```
+
+Crashes at depth 3,125 - about **6.25 KB** of input. This is the cheapest stack-exhaustion payload known against this package: roughly a quarter the input of GHSA-6j4f-fj2g-mc7p (29 KB), and about a tenth of minimatch's `MAX_PATTERN_LENGTH` (65,536).
+
+### Why `max` and `maxLength` do not help
+
+Both crashes happen while recursing into sub-expansions, before the result set grows. The payloads produce almost no output - the single-set case yields 2 results - so neither bound is ever the limiter. `expand(payload, { max: 1, maxLength: 1 })` still overflows.
+
+### Impact
+
+Any application passing an untrusted string to `expand()`, directly or through `minimatch` / `glob` as a user-supplied glob pattern, can be crashed. In Node a `RangeError` the application does not catch terminates the process, so a server globbing user input is exposed to remote unauthenticated denial of service.
+
+Availability only. No code execution, no data exposure.
+
+### Affected versions
+
+Verified affected on 1.1.18, 2.1.4, 3.0.6 and 5.0.9, at near-identical depths on every line (single set: 3,125 on all four; comma members: 3,907-4,102). Not a regression from any recent fix - the gap predates them.
+
+### Patch
+
+A `maxDepth` bound (default `EXPANSION_MAX_DEPTH`) is threaded through `expand_()`. Past the cap a group is treated as non-expanding and returned literally, which is how the parser already handles a group that cannot expand. This matches the existing `max` / `maxLength` caps, which truncate rather than throw, so `expand()` continues never to throw on any input.
+
+The default sits far above any realistic nesting depth and well below the crash threshold.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-102276?s=github&n=brace-expansion&t=npm&vr=%3E%3D4.0.0%2C%3C5.0.10"><img alt="high 7.5: CVE--2026--102276" src="https://img.shields.io/badge/CVE--2026--102276-lightgrey?label=high%207.5&labelColor=e25d68"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=4.0.0<br/><5.0.10</code></td></tr>
+<tr><td>Fixed version</td><td><code>5.0.10</code></td></tr>
+<tr><td>CVSS Score</td><td><code>7.5</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.455%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>40th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`parseCommaParts()` can exhaust the native stack and crash the process. There are two distinct ways to trigger it, both reachable from a single untrusted pattern string.
+
+This is the parsing-side counterpart to CVE-2026-14257 / GHSA-mh99-v99m-4gvg. That fix made `expand_()` iterative and documented a constant-stack-depth guarantee, but `parseCommaParts()` was left recursive, so the guarantee only held for one of the two parsing paths.
+
+### Vector 1 - unbounded recursion on `post`
+
+`parseCommaParts()` recursed on the remainder of the string once per brace group:
+
+```js
+const postParts = parseCommaParts(post)   // unbounded
+```
+
+A brace group containing many comma-separated groups drives one recursion level per group:
+
+```js
+expand('{' + '{a},'.repeat(7000) + 'b}')
+// RangeError: Maximum call stack size exceeded
+```
+
+About 7,300 repetitions - roughly 29 KB of input - is enough on Node 24; roughly 6,300 (25 KB) on Node 18. The threshold is identical on every affected release line.
+
+### Vector 2 - `push.apply` with an unbounded array
+
+Even with the recursion removed, `parseCommaParts()` spread whole arrays into an argument list:
+
+```js
+p.push.apply(p, postParts)
+parts.push.apply(parts, p)
+```
+
+`Function.prototype.apply` places one argument per element on the stack, so a single large array overflows it. This needs **no recursion depth at all** - the following reaches a recursion depth of exactly 1:
+
+```js
+expand('{{x},' + 'a,'.repeat(125000) + 'b}')
+// RangeError: Maximum call stack size exceeded
+```
+
+Threshold is about 124,300 repetitions (~249 KB). This vector was not part of the original report; it was found while verifying the fix. A patch that only de-recurses but keeps `push.apply` leaves a working denial of service behind.
+
+### Why `max` and `maxLength` do not help
+
+Both crashes happen during **parsing**, before any expansion. The payloads produce one result per group, so output size grows linearly with input and is never the limiter. `expand(payload, { max: 1, maxLength: 1 })` still overflows.
+
+### Impact
+
+Any application that passes an untrusted string to `expand()` - directly, or through `minimatch` / `glob` where it is a user-supplied glob pattern - can be crashed. In Node, a `RangeError` that the application does not catch terminates the process, so a server that globs user input is exposed to remote unauthenticated denial of service.
+
+`minimatch`'s own `MAX_PATTERN_LENGTH` cap (65,536) does not help against vector 1: the overflow threshold sits well below it. Confirmed on minimatch 10.2.6 - a 64,003-byte pattern passes the length check and overflows both `minimatch.braceExpand()` and `new minimatch.Minimatch()`.
+
+This is an availability-only issue. No code execution and no data exposure.
+
+### Not a regression
+
+5.0.8 and 5.0.9 overflow at the same repetition count, so the gap predates the recent advisories; those fixes simply did not reach it. Verified affected on 1.1.18, 2.1.4, 3.0.6, 5.0.8 and 5.0.9, all at an identical threshold.
+
+### Patch
+
+`parseCommaParts()` is rewritten as a loop that carries the partial part across chunks, and every array append uses an element-by-element loop rather than `push.apply`. The redundant `if (!str) return ['']` guard is dropped - the loop returns `['']` for the empty string on its own.
+
+Equivalence of the old and new implementations was checked by differential testing: exhaustive over every string of `{`, `}`, `,`, `a` up to length 7 plus 300,000 random inputs - 322,000 cases, zero mismatches.
+
+### Severity note
+
+Scored 7.5 High under CVSS 3.1 for consistency with the other availability advisories on this package (GHSA-mh99-v99m-4gvg, GHSA-rgw5-rvv9-x895), which use the same vector. The reporter self-assessed 6.9 Medium under CVSS 4.0 (`CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N`).
+
+### Credit
+
+Reported by baeseungwon1010, with a working proof of concept and a proposed patch. Vector 2 was identified during maintainer verification.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-102277?s=github&n=brace-expansion&t=npm&vr=%3E%3D4.0.0%2C%3C5.0.12"><img alt="medium 5.3: CVE--2026--102277" src="https://img.shields.io/badge/CVE--2026--102277-lightgrey?label=medium%205.3&labelColor=fbb552"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=4.0.0<br/><5.0.12</code></td></tr>
+<tr><td>Fixed version</td><td><code>5.0.12</code></td></tr>
+<tr><td>CVSS Score</td><td><code>5.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.428%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>37th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+Expanding `{a},b}`-shaped input takes time quadratic in the number of literal `}` characters, blocking the event loop.
+
+Bash preserves a quirk where a brace group followed by a comma set still expands (`{a},b}`). The parser implements this by rewriting the string and restarting the scan. Each pass absorbs exactly one `}` and re-scans from the beginning, so `n` trailing braces cost `n` full passes.
+
+### Reproduction
+
+```js
+const build = n => '{a}' + '}'.repeat(n) + ',z}'
+
+for (const n of [8000, 16000, 32000, 64000, 128000]) {
+  const t = Date.now()
+  expand(build(n))
+  console.log(n, Date.now() - t + 'ms')
+}
+```
+
+| n | input | time | results |
+|---|---|---|---|
+| 8,000 | 8 KB | 110 ms | 2 |
+| 16,000 | 16 KB | 446 ms | 2 |
+| 32,000 | 32 KB | 1.7 s | 2 |
+| 64,000 | 64 KB | 6.9 s | 2 |
+| 128,000 | 128 KB | **27.7 s** | 2 |
+
+`ms/n^2` is flat at ~1.7 and each doubling of `n` costs exactly 4.0x - quadratic. 128 KB of input blocks the event loop for nearly half a minute to produce two results.
+
+### Mechanism
+
+Instrumenting the rewrite branch confirms it runs exactly `n + 1` times, once per literal `}`, each re-scanning the whole string.
+
+There is a second multiplier. The rewrite replaces the group's closing `}` with the internal `escClose` sentinel, which is `'\0CLOSE' + Math.random() + '\0'` - about 25 characters. The working string therefore *grows* by ~25 characters on every pass:
+
+| n | input length | final string length |
+|---|---|---|
+| 1,000 | 1,006 | 26,006 |
+| 8,000 | 8,006 | 208,006 |
+
+So the input is inflated roughly 26x, and that factor multiplies both the quadratic constant and peak memory. This makes it partly a memory-pressure issue as well as a CPU one.
+
+### Why `max` and `maxLength` do not help
+
+The cost is in parsing, before the result set exists. The payload yields 2 results regardless of size, so neither bound is ever reached.
+
+### Impact
+
+An application passing an untrusted pattern to `expand()`, directly or through `minimatch` / `glob`, can have its event loop blocked for tens of seconds by a payload well under minimatch's 65,536-character cap. For a single-threaded Node server that is a full stall, not just a slow request.
+
+Degraded availability rather than a crash - the process recovers once the expansion completes.
+
+### Affected versions
+
+Verified affected on 1.1.18, 2.1.4, 3.0.6 and 5.0.9, all within a few percent of each other (~460-490 ms at n=16,000).
+
+### Patch
+
+The rewrite loop gets an iteration bound. Past the cap the remaining string is treated as non-expanding and returned literally, consistent with the existing `max` / `maxLength` caps, which truncate rather than throw.
+
+Note this bounds the number of passes, not the cost of each: worst-case work remains proportional to `cap x input length`. The cap is set low enough that the residual is bounded in practice, and far above what any realistic `{a},b}` input needs.
+
+### Severity note
+
+Scored 5.3 Medium (`A:L`) for consistency with GHSA-3jxr-9vmj-r5cp, the other algorithmic-complexity advisory on this package (CWE-407), which uses the same vector. The stack-exhaustion advisories on this package score `A:H` because they crash the process outright; this one stalls it.
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 1" src="https://img.shields.io/badge/H-1-e25d68"/> <img alt="medium: 0" src="https://img.shields.io/badge/M-0-lightgrey"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>musl</strong> <code>1.2.6-r3</code> (apk)</summary>
+
+<small><code>pkg:apk/alpine/musl@1.2.6-r3?os_name=alpine&os_version=3.24</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-107891?s=alpine&n=musl&ns=alpine&t=apk&osn=alpine&osv=3.24&vr=%3C1.2.6-r6"><img alt="high : CVE--2026--107891" src="https://img.shields.io/badge/CVE--2026--107891-lightgrey?label=high%20&labelColor=e25d68"/></a> 
+
+<table>
+<tr><td>Affected range</td><td><code><1.2.6-r6</code></td></tr>
+<tr><td>Fixed version</td><td><code>1.2.6-r6</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 0" src="https://img.shields.io/badge/H-0-lightgrey"/> <img alt="medium: 5" src="https://img.shields.io/badge/M-5-fbb552"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>ip-address</strong> <code>10.5.0</code> (npm)</summary>
+
+<small><code>pkg:npm/ip-address@10.5.0</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-101910?s=github&n=ip-address&t=npm&vr=%3E%3D10.2.0%2C%3C%3D10.5.0"><img alt="medium 6.9: CVE--2026--101910" src="https://img.shields.io/badge/CVE--2026--101910-lightgrey?label=medium%206.9&labelColor=fbb552"/></a> <i>Server-Side Request Forgery (SSRF)</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=10.2.0<br/><=10.5.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>10.5.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.386%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>33rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+No classifier on `Address6` recognizes the NAT64 local-use range `64:ff9b:1::/48` (RFC 8215). `isPrivate()`, `isLoopback()`, `isLinkLocal()` and their siblings all return `false` for every address in it, so an internal IPv4 destination written through a local-use NAT64 prefix (`64:ff9b:1:7f00:0:100::` for `127.0.0.1`, `64:ff9b:1:a9fe:a9:fe00::` for `169.254.169.254`) reads as an ordinary global address. `getType()` names the range `'NAT64 (local-use)'`, so the library knows what the address is and classifies it as nothing.
+
+An application that builds a network trust-boundary decision on these checks (for example a filter intended to block Server-Side Request Forgery, or SSRF) will classify an internal target as external and allow the request. SSRF is an attack in which a user-supplied address coaxes the server into making a request to an internal destination the user could not otherwise reach, such as a loopback service or a cloud metadata endpoint.
+
+### Details
+
+The fix for GHSA-22jq-vg5j-6vgg (10.2.1) classifies IPv4-mapped (`::ffff:0:0/96`) and NAT64 well-known (`64:ff9b::/96`) addresses by their embedded IPv4 address: `embeddedIPv4()` in `src/ipv6.ts` decodes the trailing 32 bits and every special-use classifier delegates to the resulting `Address4`. Those are the only two ranges `embeddedIPv4()` handles.
+
+The local-use range differs in kind from the well-known prefix, which is why extending the decoder does not fix it. RFC 8215 reserves `64:ff9b:1::/48` so an operator can carve their own NAT64 prefix out of it, of any length RFC 6052 allows (`/48`, `/56`, `/64`, or `/96`). Where the IPv4 address sits depends on that choice: `127.0.0.1` is `64:ff9b:1:7f00:0:100::` under a `/48` prefix and `64:ff9b:1::7f00:1` under a `/96` prefix, and each of those decodes to a different address under the other prefix length. There is no single embedded IPv4 address for the library to classify by.
+
+What is well-defined is the range as a whole. The IANA IPv6 Special-Purpose Address Registry lists `64:ff9b:1::/48` as not globally reachable, and Python's `ipaddress` module reports `is_private` as `True` and `is_global` as `False` for every address in it. `isPrivate()` covered ULA (`fc00::/7`) plus the decoded mapped and well-known cases, and nothing in the local-use range.
+
+### Affected versions
+
+`>= 10.2.0, <= 10.5.0`. The `is*` classification API was extended to `Address6` in 10.2.0; releases before it do not expose the method and are not affected through this vector.
+
+### Impact
+
+Every address in `64:ff9b:1::/48` parses successfully, `isValid()` is `true`, and no classifier catches it. Which internal target is reached depends on the NAT64 prefix deployed on the server's network; the well-known prefix column is the patched control from GHSA-22jq-vg5j-6vgg.
+
+| Internal target | Well-known form | Classified | Local-use form (`/48` prefix) | Classified |
+|---|---|---|---|---|
+| `127.0.0.1` | `64:ff9b::7f00:1` | loopback | `64:ff9b:1:7f00:0:100::` | nothing |
+| `10.0.0.1` | `64:ff9b::a00:1` | private | `64:ff9b:1:a00:0:100::` | nothing |
+| `169.254.169.254` | `64:ff9b::a9fe:a9fe` | link-local | `64:ff9b:1:a9fe:a9:fe00::` | nothing |
+| `192.168.1.1` | `64:ff9b::c0a8:101` | private | `64:ff9b:1:c0a8:1:100::` | nothing |
+
+### Reachability
+
+Reaching an internal host through one of these addresses requires that the server's network run a NAT64 translator on a prefix inside `64:ff9b:1::/48` and that the attacker guess or know the prefix length. That is the same precondition the well-known prefix carries (a translator on `64:ff9b::/96`), with the additional constraint that the prefix is operator-chosen rather than fixed. The severity reflects that precondition.
+
+### Proof of concept
+
+`npm i ip-address@<!-- -->10.5.0`, then:
+
+```js
+const { Address6 } = require('ip-address');
+
+// A guard of the shape the library documents.
+function isBlocked(host) {
+  const a = new Address6(host);
+  return a.isLoopback() || a.isLinkLocal() || a.isPrivate() || a.isMulticast() || a.isUnspecified();
+}
+
+for (const h of ['64:ff9b::7f00:1', '64:ff9b:1:7f00:0:100::', '64:ff9b:1::7f00:1']) {
+  console.log(isBlocked(h) ? 'BLOCK' : 'ALLOW', h, '-> getType()', new Address6(h).getType());
+}
+```
+
+On affected versions:
+
+```
+BLOCK 64:ff9b::7f00:1 -> getType() NAT64 (well-known)
+ALLOW 64:ff9b:1:7f00:0:100:: -> getType() NAT64 (local-use)
+ALLOW 64:ff9b:1::7f00:1 -> getType() NAT64 (local-use)
+```
+
+### Remediation
+
+Upgrade to the patched release. In the fix, `isPrivate()` returns `true` for every address in `64:ff9b:1::/48`, alongside ULA and the decoded mapped and well-known cases. The range is reported private as a whole rather than by a decoded IPv4 address, for the reason given above; `toAddress4Nat64(prefix)` remains the way to decode an address under a known deployment prefix. `isLoopback()` and `isLinkLocal()` are unchanged for this range, since without the prefix length the library cannot know which IPv4 address is embedded.
+
+If you cannot upgrade immediately, test the range directly:
+
+```js
+const NAT64_LOCAL_USE = new Address6('64:ff9b:1::/48');
+const localUse = new Address6(host).isHostInSubnet(NAT64_LOCAL_USE);
+```
+
+### A note on SSRF defense
+
+These methods are address classifiers, not a complete SSRF defense. Regardless of this fix, a robust SSRF guard must resolve the hostname and validate the *resolved* IP against the socket it connects to, and account for DNS rebinding and redirects. Treat these checks as one layer, not the only one.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-111997?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.3"><img alt="medium 6.3: CVE--2026--111997" src="https://img.shields.io/badge/CVE--2026--111997-lightgrey?label=medium%206.3&labelColor=fbb552"/></a> <i>Inefficient Regular Expression Complexity</i>
+
+<table>
+<tr><td>Affected range</td><td><code><=10.7.3</code></td></tr>
+<tr><td>Fixed version</td><td><code>10.7.4</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.315%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>25th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`new Address6()` and `Address6.isValid()` strip a zone identifier with the pattern `/%.*$/` before they apply the 45-character length limit. When the string holds many `%` characters followed by a line terminator, the pattern is retried from every `%` and each attempt scans to the line terminator before failing, so rejecting the string takes time proportional to the square of its length. 10,000 `%` characters and a newline take 41 ms, 40,000 take 632 ms and 100,000 take 3.9 s of synchronous work. The same strings without the newline are rejected in under a millisecond.
+
+An application that validates an attacker-supplied string with these methods can be stalled by a single long request. The input is rejected with the correct `AddressError`; the cost of reaching that rejection is the defect.
+
+### Details
+
+The constructor in `src/ipv6.ts` removes the CIDR suffix, then the zone, then checks the length of what is left:
+
+```ts
+const zone = constants6.RE_ZONE_STRING.exec(address);
+
+if (zone) {
+  this.zone = zone[0];
+
+  address = address.replace(constants6.RE_ZONE_STRING, '');
+}
+
+const longest = this.groups * 5 + 5;
+
+if (address.length > longest) {
+  throw new AddressError(`IPv6 addresses are at most ${longest} characters.`);
+}
+```
+
+`RE_ZONE_STRING` is `/%.*$/`. It has no anchor at its start, `.` does not match a line terminator (`\n`, `\r`, U+2028 or U+2029), and without the `m` flag `$` matches only at the end of the input. For `%` repeated N times and then `\n`, the engine starts a match at the first `%`, `.*` consumes the remaining `%` characters up to the newline, `$` fails there, and backtracking through every shorter `.*` fails too. The engine then starts again at the second `%`, and so on: N starts, each proportional to N. The length limit that follows rejects the string in constant time, after the scan has already run.
+
+The line terminator need not be last. Any string in which many `%` characters precede a line terminator behaves the same way.
+
+Every entry point that passes a caller's string to the `Address6` constructor is affected: `new Address6()`, `isValid()`, both arguments of `fromAddressAndMask()` and `fromAddressAndWildcardMask()`, and the prefix argument of `fromAddress4Nat64()` and `toAddress4Nat64()`. `fromWildcard()` rejects a `%` before it constructs anything, `fromURL()` admits only hex digits, colons and dots in a host, and `fromArpa()` checks the nibble grammar first, so those three are unaffected. `Address4` has no zone and is unaffected.
+
+### Affected versions
+
+`<= 10.7.3`. The zone pattern has been in the constructor since 1.0.0; 5.9.4, 9.0.5 and 10.7.0 show the same timings as 10.7.3.
+
+### Impact
+
+`Address6.isValid()` on N `%` characters and a newline, measured on ip-address 10.7.3 and node 24.21.0:
+
+| Input | Wall time | Same length of `!` |
+|---|---|---|
+| 5,461 characters | 13 ms | 0.1 ms |
+| 16 KiB | 108 ms | 0.1 ms |
+| 100 KB | 3.9 s | 0.1 ms |
+| 256 KiB | 27 s | 0.2 ms |
+
+The parse is synchronous, so the event loop is blocked for the whole of the wall time and nothing else on that process is served. No memory is retained and the process resumes when the call returns.
+
+### Reachability
+
+The input needs a line terminator after the `%` characters, which decides where it can arrive. An HTTP header value cannot carry a carriage return or a line feed, so a host or address taken from a header does not reach this. A URL can carry both characters percent-encoded at three bytes each, and Node's default 16 KB limit on the request line and headers admits about 5,461 of them: 13 ms. A request body is where the larger sizes come from. Common body parsers default to between 100 KB and 1 MB, and at 100 KB one field passed to the parser unchecked blocks the process for 3.9 s.
+
+### Proof of concept
+
+`npm i ip-address@<!-- -->10.7.3`, then:
+
+```js
+const { Address6 } = require('ip-address');
+
+function time(input) {
+  const start = process.hrtime.bigint();
+
+  Address6.isValid(input);
+
+  return `${(Number(process.hrtime.bigint() - start) / 1e6).toFixed(1)} ms`;
+}
+
+for (const n of [10000, 20000, 40000, 100000]) {
+  console.log(`${n}: ${time(`${'%'.repeat(n)}\n`)}, without the newline ${time('%'.repeat(n))}`);
+}
+```
+
+On affected versions (node 24.21.0):
+
+```
+10000: 41.0 ms, without the newline 0.0 ms
+20000: 161.1 ms, without the newline 0.0 ms
+40000: 632.4 ms, without the newline 0.1 ms
+100000: 3899.8 ms, without the newline 0.1 ms
+```
+
+Each doubling of the input multiplies the time by four.
+
+### Remediation
+
+Upgrade to the patched release. In the fix, the constructor finds the zone by the index of the first `%` and accepts the remainder as a zone only when it holds no line terminator, which reads the input once. 1 MiB of the input above is rejected in about a millisecond. Every address that parsed before parses to the same result, and a string with a line terminator after a `%` is rejected as it was.
+
+`RE_ZONE_STRING` stays exported from `v6/constants` for code that imports it directly and is marked `@<!-- -->deprecated`; the library itself does not call it.
+
+If you cannot upgrade immediately, reject a candidate longer than an address with a zone identifier can be before you parse it:
+
+```js
+if (host.length > 64) throw new Error('not an IP address');
+```
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-101913?s=github&n=ip-address&t=npm&vr=%3C%3D10.5.0"><img alt="medium 6.3: CVE--2026--101913" src="https://img.shields.io/badge/CVE--2026--101913-lightgrey?label=medium%206.3&labelColor=fbb552"/></a> <i>Incorrect Comparison</i>
+
+<table>
+<tr><td>Affected range</td><td><code><=10.5.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>10.5.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.386%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>33rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`Address6.isLinkLocal()` recognizes `fe80::/64` rather than `fe80::/10`. Link-local unicast is the whole `/10` under RFC 4291 §2.4 and the IANA IPv6 Special-Purpose Address Registry, so the method returns `false` for every link-local address outside the one `/64` that stateless address autoconfiguration happens to use. `new Address6('fe81::1').isLinkLocal()` is `false`.
+
+The library contradicts itself on the same object: for `fe81::1`, `getType()` returns `'Link-local unicast'`, `getScope()` returns `'Link local'`, and `isHostInSubnet(new Address6('fe80::/10'))` returns `true`, while `isLinkLocal()` returns `false`.
+
+An application that builds a network trust-boundary decision on these checks (for example a filter intended to block Server-Side Request Forgery, or SSRF) will classify a link-local target as unremarkable and allow the request. SSRF is an attack in which a user-supplied address coaxes the server into making a request to an internal destination the user could not otherwise reach.
+
+### Details
+
+`isLinkLocal()` in `src/ipv6.ts` compares the first 64 bits of the address against a literal string:
+
+```ts
+// Zeroes are required, i.e. we can't check isHostInSubnet with 'fe80::/10'
+if (
+  this.getBitsBase2(0, 64) ===
+  '1111111010000000000000000000000000000000000000000000000000000000'
+) {
+  return true;
+}
+```
+
+The comparison requires the first 64 bits to be exactly `fe80:0000:0000:0000`, so it accepts 2⁶⁴ of the 2¹¹⁸ addresses in `fe80::/10`. The comment states a premise the library disproves: `getType()` classifies the same range with `isHostInSubnet` against the `'fe80::/10': 'Link-local unicast'` entry in `src/v6/constants.ts`, and `Address4.isLinkLocal()` is a plain `isHostInSubnet` test against `169.254.0.0/16`. RFC 4291 §2.5.6 constrains the format of an autoconfigured link-local address; it does not define the range, and reading it as the definition is the likeliest origin of the `/64` comparison.
+
+The IPv4-mapped and NAT64 well-known paths of `isLinkLocal()` are unaffected: `::ffff:169.254.169.254` and `64:ff9b::a9fe:a9fe` are classified by their embedded IPv4 address and report `true`.
+
+### Affected versions
+
+`<= 10.5.0`. The comparison has had this shape since `Address6.isLinkLocal()` was introduced, so every release exposing the method is affected.
+
+### Impact
+
+Every well-formed address in `fe80::/10` outside `fe80::/64` is parsed successfully, `isValid()` is `true`, and the classifier reports something untrue about it. No other classifier catches these addresses: `isPrivate()` covers ULA (`fc00::/7`), not link-local.
+
+| Address | `isLinkLocal()` | `getType()` | `getScope()` |
+|---|---|---|---|
+| `fe80::1` | `true` | Link-local unicast | Link local |
+| `fe81::1` | `false` | Link-local unicast | Link local |
+| `fe8f::1` | `false` | Link-local unicast | Link local |
+| `febf::1` | `false` | Link-local unicast | Link local |
+| `fe80:0:0:1::1` | `false` | Link-local unicast | Link local |
+| `fe80::1:0:0:0:1` | `false` | Link-local unicast | Link local |
+
+Python's `ipaddress` module, the `IN6_IS_ADDR_LINKLOCAL` macro in `netinet6/in6.h`, and Linux's `ipv6_addr_type()` all apply a ten-bit prefix test and classify every row above as link-local.
+
+A request admitted through a guard built on `isLinkLocal()` reaches a link-local host on the server's own segment: a neighboring machine or the on-link router. An IPv6 link-local destination generally needs a zone index and a neighbor on the same link, so the reach is the server's own segment rather than the internet or a universal metadata endpoint, and the severity reflects that.
+
+### Proof of concept
+
+`npm i ip-address@<!-- -->10.5.0`, then:
+
+```js
+const { Address6 } = require('ip-address');
+
+// A guard of the shape the library documents.
+function isBlocked(host) {
+  const a = new Address6(host);
+  return a.isLoopback() || a.isLinkLocal() || a.isPrivate() || a.isMulticast() || a.isUnspecified();
+}
+
+for (const h of ['fe80::1', 'fe81::1', 'febf::1', 'fe80:0:0:1::1']) {
+  const a = new Address6(h);
+  console.log(isBlocked(h) ? 'BLOCK' : 'ALLOW', h, '-> getType()', a.getType());
+}
+```
+
+On affected versions:
+
+```
+BLOCK fe80::1 -> getType() Link-local unicast
+ALLOW fe81::1 -> getType() Link-local unicast
+ALLOW febf::1 -> getType() Link-local unicast
+ALLOW fe80:0:0:1::1 -> getType() Link-local unicast
+```
+
+### Remediation
+
+Upgrade to the patched release. In the fix, `isLinkLocal()` tests the address against `fe80::/10` with the same `isHostInSubnet` predicate `getType()` and `Address4.isLinkLocal()` use. The same release adds `2001::/32` to the type table so `getType()` reports `'Teredo'` for the addresses `isTeredo()` returns `true` for; that is a consistency correction with no security effect.
+
+If you cannot upgrade immediately, test the range directly:
+
+```js
+const LINK_LOCAL = new Address6('fe80::/10');
+const linkLocal = new Address6(host).isHostInSubnet(LINK_LOCAL);
+```
+
+### A note on SSRF defense
+
+These methods are address classifiers, not a complete SSRF defense. Regardless of this fix, a robust SSRF guard must resolve the hostname and validate the *resolved* IP against the socket it connects to, and account for DNS rebinding and redirects. Treat these checks as one layer, not the only one.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-101912?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0"><img alt="medium 6.3: CVE--2026--101912" src="https://img.shields.io/badge/CVE--2026--101912-lightgrey?label=medium%206.3&labelColor=fbb552"/></a> <i>Incorrect Comparison</i>
+
+<table>
+<tr><td>Affected range</td><td><code><=10.7.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>10.7.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.370%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>31st percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`isInSubnet()` and `isHostInSubnet()` accept an address of either family and compare masked binary strings without checking that both operands are the same family. `Address4` pads to 32 bits and `Address6` to 128, so whenever the leading bits agree the strings are equal: `new Address6('a00::1').isInSubnet(new Address4('10.0.0.0/8'))` is `true`, and `new Address4('32.0.0.1').isInSubnet(new Address6('2000::/3'))` is `true`. No IPv4 address is inside an IPv6 network, so both answers are untrue.
+
+An application that parses untrusted input as whichever family accepts it and then tests the result against a fixed-family allowlist can admit an address outside the list.
+
+### Details
+
+Both methods are in `src/common.ts`:
+
+```ts
+export function isInSubnet(this: Address4 | Address6, address: Address4 | Address6) {
+  if (this.subnetMask < address.subnetMask) {
+    return false;
+  }
+
+  return isHostInSubnet.call(this, address);
+}
+
+export function isHostInSubnet(this: Address4 | Address6, address: Address4 | Address6) {
+  return this.mask(address.subnetMask) === address.mask();
+}
+```
+
+`mask(n)` returns the first `n` bits of the address as a string of `0` and `1`, taken from a representation padded to the family's width. `new Address6('a00::1').mask(8)` is `'00001010'`, and so is `new Address4('10.0.0.0/8').mask()`, so string equality reports containment. The signature admits either family on either side, so TypeScript raises nothing, and the `v4` property on `Address6` marks IPv4 notation (`::ffff:10.0.0.1`) rather than family, so it does not discriminate either.
+
+Which cross-family pairs coincide depends on the network's prefix length. `mask(n)` on an `Address4` returns at most 32 bits, so an IPv6 network longer than `/32` never matches an IPv4 address, and an IPv6 network of `/32` or shorter matches exactly the IPv4 addresses whose leading bits equal its prefix. An IPv4 network is at most 32 bits and matches every IPv6 address whose leading bits equal its prefix.
+
+### Affected versions
+
+`<= 10.7.0`. The comparison has had this shape since the methods were written, so every release is affected.
+
+### Impact
+
+| Expression | Result | Reason |
+|---|---|---|
+| `new Address6('a00::1').isInSubnet(new Address4('10.0.0.0/8'))` | `true` | both mask to `00001010` |
+| `new Address4('10.0.0.1').isInSubnet(new Address6('a00::/8'))` | `true` | the same bits, reversed |
+| `new Address4('32.0.0.1').isInSubnet(new Address6('2000::/3'))` | `true` | both begin `001` |
+| `new Address4('32.1.13.184').isInSubnet(new Address6('2001:db8::/32'))` | `true` | the `/32` spells an IPv4 address |
+| `new Address6('cb00:7100::1').isInSubnet(new Address4('203.0.113.0/24'))` | `true` | the `/24` spells an IPv6 prefix |
+| `new Address4('10.0.0.1').isInSubnet(new Address6('::ffff:10.0.0.0/104'))` | `false` | `/104` is longer than 32 bits |
+| `new Address4('8.8.8.8').isInSubnet(new Address4('10.0.0.0/8'))` | `false` | same-family control |
+
+In the allowlist direction the check admits an address outside the list; in the denylist direction it blocks an address outside the list. What the coincidence can admit is narrow. An IPv6 allowlist of `/32` or shorter admits the IPv4 addresses its prefix spells: `2001:db8::/32` admits exactly `32.1.13.184`, and `2000::/3` admits `32.0.0.0/3`. Those are public IPv4 addresses; the private, loopback, and link-local ranges begin with bit patterns no allocated IPv6 prefix shares. An IPv4 allowlist admits the IPv6 addresses its prefix spells, and those all sit in blocks IANA has not allocated. So a request admitted through this defect reaches an address outside the intended list, not an internal host, and the severity reflects that.
+
+### Proof of concept
+
+`npm i ip-address@<!-- -->10.7.0`, then:
+
+```js
+const { Address4, Address6 } = require('ip-address');
+
+// An allowlist of the application's own IPv6 range, tested against whichever
+// family the input parses as.
+const allowed = new Address6('2001:db8::/32');
+
+function parse(host) {
+  return Address4.isValid(host) ? new Address4(host) : new Address6(host);
+}
+
+for (const h of ['2001:db8::1', '2001:db9::1', '32.1.13.184', '32.1.13.185']) {
+  console.log(parse(h).isInSubnet(allowed) ? 'ALLOW' : 'BLOCK', h);
+}
+```
+
+On affected versions:
+
+```
+ALLOW 2001:db8::1
+BLOCK 2001:db9::1
+ALLOW 32.1.13.184
+BLOCK 32.1.13.185
+```
+
+The IPv6 rows are right. The IPv4 address whose 32 bits equal the allowlist's prefix is admitted; the one next to it is not.
+
+### Remediation
+
+Upgrade to the patched release. In the fix, `isHostInSubnet()` returns `false` when the two addresses are of different families, and `isInSubnet()` inherits the answer. The methods keep accepting either family so existing call sites compile. A caller that means to compare across families converts first, with `Address6.fromAddress4()`, `to4()`, or `toAddress4Nat64()`: `new Address6('::ffff:10.0.0.1').to4().isInSubnet(new Address4('10.0.0.0/8'))` is `true`, as before.
+
+If you cannot upgrade immediately, compare the classes before you compare the addresses:
+
+```js
+const contained = host.constructor === network.constructor && host.isInSubnet(network);
+```
+
+### A note on SSRF defense
+
+These methods are address classifiers, not a complete SSRF defense. Regardless of this fix, a robust SSRF guard must resolve the hostname and validate the *resolved* IP against the socket it connects to, and account for DNS rebinding and redirects. Treat these checks as one layer, not the only one.
+
+</blockquote>
+</details>
+
+<a href="https://scout.docker.com/v/CVE-2026-101911?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0"><img alt="medium 6.3: CVE--2026--101911" src="https://img.shields.io/badge/CVE--2026--101911-lightgrey?label=medium%206.3&labelColor=fbb552"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code><=10.7.0</code></td></tr>
+<tr><td>Fixed version</td><td><code>10.7.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.383%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>33rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+`new Address6()` and `Address6.isValid()` place no bound on the length of the string they parse. When the string contains a character that cannot appear in an IPv6 address, the parser builds a diagnostic that wraps every such character in a 34-byte `<span class="parse-error">`, so the work and the memory scale with the input rather than with an address. A 1 MiB string of `!` costs about 110 MB and 70 ms of synchronous work, 8 MiB costs about 800 MB and half a second, 16 MiB throws a `RangeError` in place of the documented `AddressError`, and 32 MiB aborts the Node process. `isValid()` builds the diagnostic and discards it, so a caller that only asks whether a string is valid pays the full price.
+
+An application that validates an attacker-supplied string with these methods can be stalled or crashed by a single oversized request. This is a crash on input that should have been rejected cleanly, which SECURITY.md lists as in scope.
+
+### Details
+
+`parse()` in `src/ipv6.ts` checks for characters outside `[0-9a-f:/%]` and, on finding any, throws an `AddressError` whose `parseMessage` is the whole input with each offending character wrapped:
+
+```ts
+const badCharacters = address.match(constants6.RE_BAD_CHARACTERS);
+
+if (badCharacters) {
+  throw new AddressError(
+    `Bad character${badCharacters.length > 1 ? 's' : ''} detected in address: ${badCharacters.join('')}`,
+    address.replace(constants6.RE_BAD_CHARACTERS, '<span class="parse-error">$1</span>'),
+  );
+}
+```
+
+`RE_BAD_CHARACTERS` is `/([^0-9a-f:/%])/gi`. For an input made entirely of punctuation the `match` allocates one string per character, the `join` copies them all into the message, and the `replace` produces a string 34 times the input. Nothing before this point looks at the length: the constructor strips a CIDR suffix and a zone identifier and hands the rest to `parse()`. The `RE_BAD_ADDRESS` branch below it builds its diagnostic the same way at about a third of the ratio, for input in the hex-and-colon alphabet such as `fffff:` repeated.
+
+`parse()` is reached only through the constructor, so every entry point that constructs an `Address6` from a string it has not already bounded is affected: `new Address6()`, `isValid()`, both arguments of `fromAddressAndMask()` and `fromAddressAndWildcardMask()`, `fromWildcard()`, and the prefix argument of `fromAddress4Nat64()` and `toAddress4Nat64()`. `fromURL()` admits only hex, colons, and dots in a host, so it reaches the `RE_BAD_ADDRESS` branch and not the other. `fromArpa()` caps its input at 32 nibbles before constructing anything, and `fromBigInt()`, `fromByteArray()`, and `fromAddress4()` build the string themselves, so those are unaffected.
+
+The `replace` is where size becomes fatal. V8 caps a string at 2^29 - 24 characters, so past 16 MiB of input the `replace` throws `RangeError: Invalid string length` rather than the `AddressError` callers catch; `isValid()` swallows it, but a constructor call guarded by `instanceof AddressError` does not. Past 32 MiB the replacement builder's internal array exceeds its maximum size and V8 aborts the process with `Fatal JavaScript invalid size error`, which no `try`/`catch` intercepts.
+
+### Affected versions
+
+`<= 10.7.0`. The diagnostic has had this shape since the parser was written, so every release is affected.
+
+### Impact
+
+`Address6.isValid()` on N bytes of `!`, measured on node 24.19.0:
+
+| Input | Wall time | Transient heap | Outcome |
+|---|---|---|---|
+| 16 KiB | 1 ms | 1 MB | `false` |
+| 1 MiB | 73 ms | 112 MB | `false` |
+| 8 MiB | 464 ms | 784 MB | `false` |
+| 16 MiB | | | `RangeError: Invalid string length` from the constructor; `isValid()` returns `false` |
+| 32 MiB | | | the process aborts |
+
+The parse is synchronous, so the event loop is blocked for the whole of the wall time and nothing else on that process is served. The heap is transient and is reclaimed after the call returns, so memory does not accumulate across requests; the abort at 32 MiB is a single request. `Address4` has no diagnostic of this shape and parses the same 8 MiB in a few milliseconds.
+
+### Reachability
+
+Reaching the sizes above requires that the application hand the parser a string it has not already bounded. A host taken from a URL or an HTTP header is bounded by the server's header limit (Node's default is 16 KB), and at that size the cost is a millisecond. The megabyte sizes need a request body the application accepts at that scale and passes through unchecked. Common body parsers default to between 100 KB and 1 MB, which caps the effect at a stall of under 100 ms per request, and the abort needs 32 MiB in a single field, which no default admits. The severity is scored for the stall, not the abort: an application that accepts 32 MiB bodies into an address parser is the exception, and the reader running one should treat this as a crash.
+
+### Proof of concept
+
+`npm i ip-address@<!-- -->10.7.0`, then:
+
+```js
+const { Address6 } = require('ip-address');
+
+for (const mib of [1, 8]) {
+  const input = '!'.repeat(mib * 1024 * 1024);
+  const before = process.memoryUsage().heapUsed;
+  const start = process.hrtime.bigint();
+
+  Address6.isValid(input);
+
+  const ms = Number(process.hrtime.bigint() - start) / 1e6;
+  const mb = (process.memoryUsage().heapUsed - before) / 1048576;
+
+  console.log(`${mib} MiB: ${ms.toFixed(0)} ms, ${mb.toFixed(0)} MB`);
+}
+
+try {
+  new Address6('!'.repeat(16 * 1024 * 1024));
+} catch (e) {
+  console.log(`16 MiB: ${e.name}: ${e.message}`);
+}
+
+new Address6('!'.repeat(32 * 1024 * 1024));
+```
+
+On affected versions (node 24.19.0):
+
+```
+1 MiB: 73 ms, 112 MB
+8 MiB: 464 ms, 784 MB
+16 MiB: RangeError: Invalid string length
+
+
+#
+# Fatal error in , line 0
+# Fatal JavaScript invalid size error 142606336
+#
+```
+
+The last line is V8 terminating the process; the script does not reach its end.
+
+### Remediation
+
+Upgrade to the patched release. In the fix, the constructor rejects an address longer than the family allows before `parse()` runs: 45 characters for IPv6 once the CIDR suffix and zone identifier are stripped (six four-digit groups, six colons, and a dotted quad, the same line CPython's `ipaddress` module draws), and 15 characters for IPv4. The rejection is an `AddressError` with no `parseMessage`, so `isValid()` returns `false` for the cost of a length comparison and the 32 MiB input above is rejected in the same time as a 46-character one. A zone identifier is not counted, since it never reaches the diagnostic.
+
+This rejects nothing a previous release accepted: every string longer than the limit already failed to parse.
+
+If you cannot upgrade immediately, reject a candidate longer than an address with a zone identifier can be before you parse it:
+
+```js
+if (host.length > 64) throw new Error('not an IP address');
+```
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 0" src="https://img.shields.io/badge/H-0-lightgrey"/> <img alt="medium: 1" src="https://img.shields.io/badge/M-1-fbb552"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>postcss-selector-parser</strong> <code>7.1.4</code> (npm)</summary>
+
+<small><code>pkg:npm/postcss-selector-parser@7.1.4</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-104844?s=github&n=postcss-selector-parser&t=npm&vr=%3E%3D7.0.0%2C%3C7.1.6"><img alt="medium 5.9: CVE--2026--104844" src="https://img.shields.io/badge/CVE--2026--104844-lightgrey?label=medium%205.9&labelColor=fbb552"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=7.0.0<br/><7.1.6</code></td></tr>
+<tr><td>Fixed version</td><td><code>7.1.6</code></td></tr>
+<tr><td>CVSS Score</td><td><code>5.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.389%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>33rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Impact
+
+`.` and `#` are not word delimiters in the tokenizer, so a flat selector such as
+`.a.a.a...` reaches `splitWord()` as a single word token carrying n class or id
+indexes. Three passes scanned those index arrays linearly for every index,
+making the parse O(n^2) in the number of indexes rather than in input length:
+`uniqs()`, the `indices.forEach` loop, and the Sass-interpolation filter.
+Parsing a 400 KB flat selector took ~34 s on a modern laptop, fully occupying a
+single thread. A benign selector of identical byte size parses in tens of
+milliseconds, so the cost is driven by the index count, not the input size.
+The nesting depth of such a selector is 0, so the `maxNestingDepth` guard added
+in 7.1.3 offers no protection.
+
+Reachability is deployment dependent. Only consumers that parse untrusted,
+attacker-supplied selectors synchronously in a request path are exposed, for
+example CSS sanitizers, CSS-in-JS services and online playgrounds. Ordinary
+build-time use on trusted sources is not affected.
+
+### Patches
+
+Fixed in 7.1.6. The three passes now use Set membership tests, making parsing
+linear in the number of indexes. There is no behaviour change: parsing is
+byte-identical on a differential corpus of 8413 selectors.
+
+### Workarounds
+
+Cap the size of selectors accepted from untrusted sources before parsing.
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 0" src="https://img.shields.io/badge/H-0-lightgrey"/> <img alt="medium: 1" src="https://img.shields.io/badge/M-1-fbb552"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>minimatch</strong> <code>10.2.5</code> (npm)</summary>
+
+<small><code>pkg:npm/minimatch@10.2.5</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-118764?s=github&n=minimatch&t=npm&vr=%3E%3D7.0.0%2C%3C11.0.1"><img alt="medium 6.9: CVE--2026--118764" src="https://img.shields.io/badge/CVE--2026--118764-lightgrey?label=medium%206.9&labelColor=fbb552"/></a> <i>Asymmetric Resource Consumption (Amplification)</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=7.0.0<br/><11.0.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>11.0.1</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.9</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.301%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>23rd percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+minimatch 10.2.6 contains an attacker-controlled pattern amplification in firstPhasePreProcess() when optimizationLevel >= 2.
+
+researcher: Reid Downing (b1nv0id)
+files: 
+
+- src/index.ts: 690-770
+- src/index.ts: 780-796
+
+issue:
+input-controlled growth of globParts during first-phase preprocessing, followed by quadratic second-phase processing.
+
+the **/../ transformation clones a globparts entry and appends the clone to the same globparts array:
+```
+parts.splice(gs, 1)
+const other = parts.slice(0)
+other[gs] = '**'
+globParts.push(other)
+```
+this occurs inside a do...while (didSomething) fixpoint loop, allowing generated entries to be processed again.
+
+the expanded globparts array is subsequently processed by secondPhasePreProcess(), which performs pairwise comparisons:
+```
+for (let i = 0; i < globParts.length - 1; i++) {
+  for (let j = i + 1; j < globParts.length; j++) {
+    this.partsMatch(...)
+  }
+}
+```
+an attacker who can supply a glob pattern can therefore cause additional pattern entries to be generated during preprocessing, followed by quadratic pairwise processing, resulting in excessive cpu and memory consumption.
+
+</blockquote>
+</details>
+</details></td></tr>
+
+<tr><td valign="top">
+<details><summary><img alt="critical: 0" src="https://img.shields.io/badge/C-0-lightgrey"/> <img alt="high: 0" src="https://img.shields.io/badge/H-0-lightgrey"/> <img alt="medium: 1" src="https://img.shields.io/badge/M-1-fbb552"/> <img alt="low: 0" src="https://img.shields.io/badge/L-0-lightgrey"/> <!-- unspecified: 0 --><strong>glob</strong> <code>13.0.6</code> (npm)</summary>
+
+<small><code>pkg:npm/glob@13.0.6</code></small><br/>
+<a href="https://scout.docker.com/v/CVE-2026-118773?s=github&n=glob&t=npm&vr=%3E%3D9.0.0%2C%3C%3D14.0.1"><img alt="medium 6.3: CVE--2026--118773" src="https://img.shields.io/badge/CVE--2026--118773-lightgrey?label=medium%206.3&labelColor=fbb552"/></a> <i>Uncontrolled Resource Consumption</i>
+
+<table>
+<tr><td>Affected range</td><td><code>>=9.0.0<br/><=14.0.1</code></td></tr>
+<tr><td>Fixed version</td><td><code>14.0.2</code></td></tr>
+<tr><td>CVSS Score</td><td><code>6.3</code></td></tr>
+<tr><td>CVSS Vector</td><td><code>CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N</code></td></tr>
+<tr><td>EPSS Score</td><td><code>0.350%</code></td></tr>
+<tr><td>EPSS Percentile</td><td><code>29th percentile</code></td></tr>
+</table>
+
+<details><summary>Description</summary>
+<blockquote>
+
+### Summary
+
+In glob 13.0.6, an aborted async walk rejects or emits an error but continues recursively reading directories in the background.
+
+The root cause is that abort branches in src/walker.ts call cb() without returning. As a result, callers that rely on signal or AbortSignal.timeout() to bound glob traversal cost can still incur filesystem I/O and CPU work after the request has already been rejected.
+
+### Details
+
+This was reproduced on glob v13.0.6 (commit e80cb38ae60d6cbff9e75f39032a994858994d35).
+
+The README documents that the signal option cancels the glob walk. However, in src/walker.ts, the following methods call cb() when this.signal?.aborted is true but do not return:
+
+- GlobUtil.walkCB()
+- GlobUtil.walkCB2()
+- GlobUtil.walkCBSync()
+- GlobUtil.walkCB2Sync()
+
+Example vulnerable pattern:
+
+if (this.signal?.aborted) cb()
+
+Because execution continues after cb(), the walker still reaches processor.processPatterns(), readdirCB(), and recursive walkCB2() calls.
+
+The issue was directly demonstrated against v13.0.6. A source-history review shows the same missing-return pattern is present in tagged releases from v9.0.0 through v13.0.6.
+
+The issue affects both glob() and globStream().
+
+Recommended fix:
+Change each abort branch to return immediately:
+
+if (this.signal?.aborted) return cb()
+
+### Proof of concept
+
+Environment:
+- Linux x86_64
+- Node.js v22.23.3
+- npm 10.9.9
+- glob 13.0.6
+
+Reproduction steps:
+
+1. Install the affected package:
+   npm init -y
+   npm install glob@<!-- -->13.0.6
+
+2. Run the attached PoC:
+   node poc/abort-continues-work.mjs
+
+The PoC aborts after the first readdir() call, waits briefly, and counts how many more directory reads happen after the promise has already rejected.
+
+Observed output on the vulnerable version:
+
+{
+  "rejection": "Error: probe-abort",
+  "readdirCalls": 1365,
+  "readdirCallsAtReject": 5,
+  "readdirCallsAfterReject": 1360
+}
+
+Expected behavior:
+readdirCallsAfterReject should be 0.
+
+A second PoC using AbortSignal.timeout() also reproduces the issue:
+
+{
+  "rejection": "TimeoutError: The operation was aborted due to timeout",
+  "readdirCalls": 133,
+  "readdirCallsAtReject": 1,
+  "readdirCallsAfterReject": 132
+}
+
+The same test against a patched build with return cb() in the four abort branches stops immediately:
+
+{
+  "readdirCalls": 1,
+  "readdirCallsAtReject": 1,
+  "readdirCallsAfterReject": 0
+}
+
+### Impact
+
+This is an availability issue.
+
+Applications that expose globbing over attacker-influenced patterns or attacker-controlled directory trees and use AbortSignal / AbortSignal.timeout() as a traversal budget can still perform significant filesystem I/O and CPU work after a request has already timed out or been canceled.
+
+Repeated timed-out requests can stack background glob walks and degrade worker throughput or service availability.
+
+No confidentiality or integrity impact was observed.
+
+</blockquote>
+</details>
+</details></td></tr>
+</table>
+
